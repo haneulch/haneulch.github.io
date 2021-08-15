@@ -15,3 +15,23 @@ comments: true
     <version>0.9.1</version>
 </dependency>
 ```
+
+## token 생성
+* setSubject 토큰 제목
+* signWith 암호화 방식과 키를 지정
+* setExpiration token 유효기간 지정
+
+```java
+public String createAccessToken(String username) {
+    
+    Calendar cale = Calendar.getInstance();
+    cale.add(Calendar.SECOND, EXPIRE_SECONDS);
+    
+    return Jwts
+            .builder()
+            .setSubject(username)
+            .signWith(SignatureAlgorithm.HS256, SECRET)
+            .setExpiration(cale.getTime())
+            .compact();
+}
+```
