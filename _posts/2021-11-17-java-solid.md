@@ -14,12 +14,14 @@ comments: true
  - D 인터페이스 분리 원칙
 
 
- ** SRP(Single Responsibility) 단일 책임 원칙
+**SRP(Single Responsibility) 단일 책임 원칙**
+ - 모든 클래스는 하나의 책임만 가지며, 클래스는 그 책임을 완전히 [캡슐화](./2021-06-17-spring-aop.md)해야 함을 일컫는다.
+ - [단일책임원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)
 
- ** OCP(Open-Closed) 개방-폐쇄 원칙
+**OCP(Open-Closed) 개방-폐쇄 원칙**
 
- ** LSP(Liskov Substitution) 리스코프 치환 원칙
+**LSP(Liskov Substitution) 리스코프 치환 원칙**
 
- ** DIP(Dependency Inversion) 의존 역전 원칙
+**DIP(Dependency Inversion) 의존 역전 원칙**
  
- ** ISP(Interface Segregation) 인터페이스 분리 원칙
+**ISP(Interface Segregation) 인터페이스 분리 원칙**
