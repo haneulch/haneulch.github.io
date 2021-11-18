@@ -15,7 +15,7 @@ comments: true
 
 
 **SRP(Single Responsibility) 단일 책임 원칙**
- - 모든 클래스는 하나의 책임만 가지며, 클래스는 그 책임을 완전히 [캡슐화](./2021-06-17-spring-aop.md)해야 함을 일컫는다.
+ - 모든 클래스는 하나의 책임만 가지며, 클래스는 그 책임을 완전히 [캡슐화](../java-oop/)해야 함을 일컫는다.
  - [단일책임원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)
 
 **OCP(Open-Closed) 개방-폐쇄 원칙**
