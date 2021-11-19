@@ -19,6 +19,9 @@ comments: true
  - [단일책임원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)
 
 **OCP(Open-Closed) 개방-폐쇄 원칙**
+ - 확장에 대해서는 열려있어야 하며, 수정에 대해서는 닫혀있어야 한다.
+ - 하나의 모듈을 수정할 때, 그 모듈을 사용하는 모든 모듈을 줄줄이 수정해야한다면 유지보수에 어려움이 있으므로 이러한 수정을 유발하지 않도록 구조를 올바르게 리팩토링 해야한다.
+ - [개방-폐쇄 원칙](https://ko.wikipedia.org/wiki/%EA%B0%9C%EB%B0%A9-%ED%8F%90%EC%87%84_%EC%9B%90%EC%B9%99)
 
 **LSP(Liskov Substitution) 리스코프 치환 원칙**
 
