@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김하늘 | 백엔드 개발자 포트폴리오</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans KR, Fira Code) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-primary: #111111;
+            --color-primary-hover: #222222;
+            --color-primary-light: #e6f0ff;
+            --color-accent: #007aff;
+            --color-bg-gradient: linear-gradient(135deg, #111111 0%, #333333 100%);
+            --color-text-on-primary: #007aff;
+            --company-name: "NONE";
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+        }
+
+        /* 공통 테마 컬러 바인딩 */
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-text-on-primary);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .text-primary {
+            color: var(--color-primary);
+        }
+
+        .bg-primary-light {
+            background-color: var(--color-primary-light);
+        }
+
+        .border-primary {
+            border-color: var(--color-primary);
+        }
+
+        .theme-hero {
+            background: var(--color-bg-gradient);
+        }
+
+        .accent-badge {
+            background-color: var(--color-accent);
+            color: white;
+        }
+    </style>
+</head>
+
+<body data-theme="default">
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl font-black tracking-tight flex items-center gap-1.5">
+                    <span class="text-primary" id="companyLogo">🔵</span>
+                    김하늘 <span
+                        class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600 hidden sm:inline">Backend
+                        Engineer</span>
+                </span>
+            </div>
+
+            <!-- 태블릿/데스크톱 네비게이션 -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#about" class="hover:text-primary transition-colors">소개</a>
+                <a href="#stats" class="hover:text-primary transition-colors">주요지표</a>
+                <a href="#projects" class="hover:text-primary transition-colors">핵심 프로젝트</a>
+                <a href="#timeline" class="hover:text-primary transition-colors">경력 사항</a>
+                <a href="#skills" class="hover:text-primary transition-colors">기술 스택</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about"
+        class="theme-hero text-white py-16 px-4 sm:px-6 lg:px-8 transition-all duration-500 relative overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]">
+        </div>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between relative z-10 gap-10">
+            <!-- 소개 문구 -->
+            <div class="flex-1 space-y-6 text-center md:text-left">
+                <h1 class="text-4xl sm:text-5xl font-black leading-tight tracking-tight">
+                    대규모 트래픽 속에서<br> 시스템의 무중단과 성능 한계를 돌파하는
+                    개발자
+                </h1>
+                <p class="text-white/80 text-base sm:text-lg font-light max-w-2xl leading-relaxed">
+                    <strong>월간 10억 건, 일간 3,000만 건 이상</strong>의 트래픽을 감당하는 원스토어의 <strong>전시/상품 시스템</strong>의 핵심 기능을
+                    설계하고 고도화해온 백엔드 개발자입니다.<br /> 고객에게 최고의 사용자
+                    경험을 창출하겠습니다.
+                </p>
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                    <a href="#projects"
+                        class="bg-white text-slate-900 font-bold px-5 py-2.5 rounded-lg shadow-md hover:bg-slate-100 transition-all text-sm flex items-center gap-2">
+                        <span>📂 핵심 사례 보기</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 프로필 아바타 & 연락처 카드 (이메일 및 복사 기능 탑재) -->
+            <div
+                class="w-full max-w-md bg-white text-slate-900 rounded-2xl shadow-2xl p-6 border border-slate-100 relative">
+                <div class="flex items-center space-x-4 mb-5 pb-4 border-b border-slate-100">
+                    <div
+                        class="w-16 h-16 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-2xl font-bold shrink-0">
+                        KHN
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold">김하늘 (Kim Haneul)</h2>
+                        <p class="text-xs text-slate-500">Java / Spring Boot 백엔드 개발자</p>
+                        <p class="text-xs text-slate-400 mt-0.5">경력 9년 3개월 (원스토어 주식회사 재직 중)</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3.5 text-xs text-slate-600">
+                    <div class="flex items-center justify-between">
+                        <span class="font-medium text-slate-400">Core Stack</span>
+                        <span class="font-mono text-slate-800">Java 21, Spring Boot, JPA</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="font-medium text-slate-400">DB & Cache</span>
+                        <span class="font-mono text-slate-800">MySQL, Redis, MongoDB</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="font-medium text-slate-400">Middleware</span>
+                        <span class="font-mono text-slate-800">RabbitMQ, AWS SQS/SNS</span>
+                    </div>
+
+                    <!-- 이메일 및 전화번호 정보 배치 -->
+                    <div class="pt-3 border-t border-slate-100 space-y-2.5">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 font-medium">✉️ 이메일</span>
+                            <button onclick="copyToClipboard('khaneul_c@naver.com', 'email')"
+                                class="text-primary hover:underline font-semibold font-mono flex items-center gap-1">
+                                <span>khaneul_c@naver.com</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 font-medium">📞 연락처</span>
+                            <button onclick="copyToClipboard('010-3530-7282', 'phone')"
+                                class="text-primary hover:underline font-semibold font-mono flex items-center gap-1">
+                                <span>010-3530-7282</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 복사 완료 알림 레이어 -->
+                <div id="copyAlert"
+                    class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[11px] px-3.5 py-1.5 rounded-full shadow-lg transition-all">
+                    복사 완료!</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="py-12 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-center text-xs font-bold tracking-widest text-slate-400 uppercase mb-8">비즈니스 임팩트
+            </h3>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                <div
+                    class="p-4 rounded-xl bg-slate-50/50 border border-slate-100 transition-transform hover:scale-105 duration-200">
+                    <p class="text-slate-500 text-xs sm:text-sm mb-1">최대 유입 트래픽 처리</p>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-primary">10억 건<span
+                            class="text-xs font-normal text-slate-500 ml-1">/월</span></p>
+                    <p class="text-[11px] text-slate-400 mt-1">일간 3,000만+ 트래픽 극복</p>
+                </div>
+                <div
+                    class="p-4 rounded-xl bg-slate-50/50 border border-slate-100 transition-transform hover:scale-105 duration-200">
+                    <p class="text-slate-500 text-xs sm:text-sm mb-1">피크타임 DB CPU 점유율</p>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-primary">80% → 30%</p>
+                    <p class="text-[11px] text-slate-400 mt-1">추가 서버 증설 없는 최적화</p>
+                </div>
+                <div
+                    class="p-4 rounded-xl bg-slate-50/50 border border-slate-100 transition-transform hover:scale-105 duration-200">
+                    <p class="text-slate-500 text-xs sm:text-sm mb-1">초저지연 응답 속도 보장</p>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-primary">5ms <span
+                            class="text-xs font-normal text-slate-500">이하</span></p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-10 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-4 mb-12">
+                <span
+                    class="text-xs font-bold text-primary bg-primary-light px-3 py-1 rounded-full uppercase tracking-wider">PROJECTS</span>
+                <h2 class="text-3xl font-bold tracking-tight">핵심 프로젝트</h2>
+            </div>
+
+            <!-- 최고 성과 프로젝트 3선 카드 영역 -->
+            <div class="space-y-10">
+
+                <!-- 1. 확률적 자료구조 (Bloom Filter) 기반 DB 최적화 -->
+                <div
+                    class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all relative">
+                    <div class="absolute top-6 right-6 hidden sm:block">
+                        <span class="text-xs font-bold bg-rose-100 text-rose-700 px-3 py-1 rounded-full">DB 부하 개선율
+                            62%</span>
+                    </div>
+
+                    <div class="mb-5">
+                        <span class="text-xs font-bold text-slate-400 tracking-wider uppercase block mb-1">원스토어
+                            주식회사</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900">앱 업데이트 트래픽 폭주 대응 및 확률적 자료구조 기반 DB
+                            부하
+                            최적화</h3>
+                        <p class="text-xs text-slate-500 mt-1 font-mono">📅 2025.05</p>
+                    </div>
+
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                        새벽 특정 시간대에 일시적으로 집중되는 단말의 앱 업데이트 조회 API Call로 인해 발생하는 DB 과부하 문제를<br />장비 추가나 하드웨어 스케일업 없이
+                        <strong>소프트웨어 구조 및 데이터 필터링 계층 고도화만으로 해결한 </strong>프로젝트입니다.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+                        <div class="space-y-3.5 bg-white p-5 rounded-xl border border-slate-100">
+                            <span class="font-bold text-red-500 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Situation & Problem
+                            </span>
+                            <ul class="list-disc pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                                <li>매일 새벽 시간대 업데이트 조회 트래픽이 평상시 대비 <strong>10배 이상 폭주</strong>하며 DB CPU 점유율이 80%를 초과하는
+                                    위협 발생</li>
+                                <li>검출된 패킷 분석 결과, 전체 트래픽의 상당수가 실제 업데이트가 존재하지 않는 패키지의 중복성 쿼리임에도 매번 DB Disk I/O를 직접 조회하여
+                                    불필요한 부하 유발</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-3.5 bg-white p-5 rounded-xl border border-slate-100">
+                            <span class="font-bold text-emerald-600 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Action & Result
+                            </span>
+                            <ul class="list-disc pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                                <li><strong>다계층 런타임 필터링</strong> 설계: <br />요청을 DB에 조회하기전 1차 블랙리스트 제외,<br />
+                                    2차로 메모리 효율성이 극대화된 <strong>Bloom Filter</strong>를 거쳐 DB에 실존하지 않는 원본 데이터를 확률적으로
+                                    제외, <br />3차로 Local Cache를 조합 적용</li>
+                                <li><strong>Result:</strong> 유효하지 않은 요청을 DB 관문 앞에서 <strong>90% 이상 블로킹</strong>하는 데 성공.
+                                    인프라 증설 비용 없이 <strong>DB CPU 사용률을 80%에서 30% 이하로 감소</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all relative">
+                    <div class="absolute top-6 right-6 hidden sm:block">
+                        <span class="text-xs font-bold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">보일러플레이트 60%
+                            제거</span>
+                    </div>
+
+                    <div class="mb-5">
+                        <span class="text-xs font-bold text-slate-400 tracking-wider uppercase block mb-1">원스토어
+                            주식회사</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900">Spring Cloud Stream 기반 메시징 아키텍처 추상화
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1 font-mono">📅 2024.12 - 2025.01 (2개월)</p>
+                    </div>
+
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                        RabbitMQ와 Azure Service Bus가 공존하는 멀티 브로커 환경에서<strong><br />Spring
+                            Cloud Stream</strong> 기반의 메시징 추상화를 통해 비즈니스 코드와 인프라 환경의 결합도를 낮춘 프로젝트입니다.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+                        <div class="space-y-3.5 bg-white p-5 rounded-xl border border-slate-100">
+                            <span class="font-bold text-red-500 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Situation & Problem
+                            </span>
+                            <ul class="list-disc pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                                <li>인프라 종류에 의존적인 코드 분기로 인해 비즈니스 로직과 데이터 바인더 인터페이스간 결합으로 인한 <strong>중복 코드
+                                        발생</strong> 및 관리에 어려움 발생</li>
+                                <li>브로커 기술 변경(예: Kafka 도입 등) 시 소스 코드 전면 수정이 요구되어 확장 시의 기술적 유연성이 저해되고 신규 추가 시 높은 학습 장벽 존재
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="space-y-3.5 bg-white p-5 rounded-xl border border-slate-100">
+                            <span class="font-bold text-emerald-600 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Action & Result
+                            </span>
+                            <ul class="list-disc pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                                <li><strong>Binder 추상화 및 공통 로직 라이브러리화</strong>: Spring Cloud Stream의 선언적 바인딩(yaml 구성)
+                                    구조로 전면 개편. 브로커 종속성을 제거하고, 각 메세지별 순수 비즈니스 로직만 구현 유지할 수 있는 구조 확립</li>
+                                <li><strong>Result:</strong> 메시징 부속 코드가 약 <strong>60% 감소</strong>하여 순수 도메인 집중도를 향상시켰고,
+                                    새로운 구독 처리 로직 작성 시 소요 공수를 <strong>50% 이상 단축</strong>함</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all relative">
+                    <div class="absolute top-6 right-6 hidden sm:block">
+                        <span class="text-xs font-bold bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full">네트워크 오버헤드
+                            70% 차단</span>
+                    </div>
+
+                    <div class="mb-5">
+                        <span
+                            class="text-xs font-bold text-slate-400 tracking-wider uppercase block mb-1">(주)스테이지파이브</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900">AWS SQS 기반 큐 아키텍처 재설계 및 미들웨어 메시지 최적화
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1 font-mono">📅 2023.02</p>
+                    </div>
+
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                        대량 프로모션 유입 시 시스템 지연으로 인한 SQS 적체현상과 주문 시스템이 지연되는 연쇄 장애 위험을 해결한
+                        프로젝트입니다.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+                        <div class="space-y-3.5 bg-white p-5 rounded-xl border border-slate-100">
+                            <span class="font-bold text-red-500 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Situation & Problem
+                            </span>
+                            <ul class="list-disc pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                                <li>기존 구조는 큐에 들어온 단순 키(ID)를 기준으로 메인 비즈니스 로직 동기화를 수행할 때마다 주문 시스템 API를 지속 재호출하는 구조</li>
+                                <li>프로모션으로 배송 추적 요청이 비동기적으로 급증하면서 큐 메세지 적체 현상 발생 동시에 주문시스템에 과도한 조회 요청으로 인해 주문 시스템에 지연을
+                                    유발하는 현상
+                                    발생</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-3.5 bg-white p-5 rounded-xl border border-slate-100">
+                            <span class="font-bold text-emerald-600 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Action & Result
+                            </span>
+                            <ul class="list-disc pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                                <li><strong>메시지 페이로드 경량 설계 및 상태별 멀티 큐 배포</strong>: 주문 시스템 조회를 최소화하도록 필수 배송추적 메타데이터를 메시지
+                                    바디에 담는 구조로 변경. 배송 상태별(접수/배송/완료)로 전용 SQS 파이프를 다각화하여 특정 장애 영향이 고착되지 않게 분리</li>
+                                <li><strong>Result:</strong> 피크 타임 SQS 적체 현상 완전 제거, 주문 서비스 지연 현상 완전 제거
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="py-16 bg-slate-50/50 border-t border-b border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-2 mb-12">
+                <span
+                    class="text-xs font-bold text-primary bg-primary-light px-3 py-1 rounded-full uppercase tracking-wider">CAREER
+                    TIMELINE</span>
+                <h2 class="text-2xl font-bold tracking-tight">경력사항</h2>
+            </div>
+
+            <!-- 타임라인 일러스트 -->
+            <div class="relative border-l-2 border-slate-200 pl-6 ml-4 space-y-10">
+                <div class="relative">
+                    <span
+                        class="absolute -left-[31px] top-1.5 bg-primary w-4 h-4 rounded-full border-4 border-white shadow"></span>
+                    <h3 class="text-lg font-bold text-slate-900">원스토어 주식회사</h3>
+                    <p class="text-xs text-slate-500 font-mono">2024.06 ~ 현재 (재직 중) | 플랫폼 개발실(스토어 개발팀)</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[역할]</strong> 앱 마켓 내 메인 전시 및 상품 시스템
+                        백엔드 담당</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[주요 업무]</strong> 상품 배포 수신 파이프라인,
+                        통계 배치 프로세스, 전시 제어 어드민(Admin) 시스템 설계 및
+                        기능 개발</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[Core Skills]</strong> Java 21, Spring Boot, JPA,
+                        Mybatis,
+                        Redis, RabbitMQ, MongoDB</p>
+                </div>
+                <div class="relative">
+                    <span
+                        class="absolute -left-[31px] top-1.5 bg-slate-300 w-4 h-4 rounded-full border-4 border-white shadow"></span>
+                    <h3 class="text-lg font-bold text-slate-900">(주)스테이지파이브</h3>
+                    <p class="text-xs text-slate-500 font-mono">2021.11 ~ 2024.06 | 서비스 개발실(백엔드 1팀)</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[역할]</strong> 통신·커머스 MVNO 플랫폼 코어 백엔드(주문/개통/배송) 시스템
+                        백엔드 담당</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[주요 업무]</strong> 외부 규격 API 연동 및 주문/개통 비즈니스 로직 개발,
+                        통계 배치 시스템 개발</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[Core Skills]</strong> Java 17, Spring Boot, JPA,
+                        AWS SQS/SNS, MySQL</p>
+                </div>
+                <div class="relative">
+                    <span
+                        class="absolute -left-[31px] top-1.5 bg-slate-300 w-4 h-4 rounded-full border-4 border-white shadow"></span>
+                    <h3 class="text-lg font-bold text-slate-900">(주)에스티에이엠</h3>
+                    <p class="text-xs text-slate-500 font-mono">2017.04 ~ 2021.10 | 백엔드 개발팀</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[역할]</strong> 주문관리시스템 백엔드 담당</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[주요 업무]</strong> 레거시 시스템 전환 개발(SAP -> Java), 외부 규격
+                        API 연동 및 주문/결제 시스템 비즈니스 로직 개발</p>
+                    <p class="text-xs text-slate-600 mt-1.5"><strong>[Core Skills]</strong> Java 8/11, Spring Boot,
+                        Oracle DB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-12">
+                <span
+                    class="text-xs font-bold text-primary bg-primary-light px-3 py-1 rounded-full uppercase tracking-wider">TECHNICAL
+                    SKILLS</span>
+                <h2 class="text-3xl font-bold tracking-tight">전문 기술 역량</h2>
+                <p class="text-sm text-slate-500 max-w-xl mx-auto">
+                    단순히 사용법을 아는 것에 그치지 않고, <br />대규모 성능 튜닝과 아키텍처 수준에서의 이점을 이해하고 활용합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Stack 1 -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 space-y-4">
+                    <div class="flex items-center gap-2 border-b border-slate-200/60 pb-3">
+                        <span class="text-2xl">☕</span>
+                        <h3 class="font-bold text-slate-800">Language & Framework</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li class="flex justify-between"><strong>Java 21</strong></li>
+                        <li class="flex justify-between"><strong>Spring Boot</strong></li>
+                        <li class="flex justify-between"><strong>JPA</strong></li>
+                        <li class="flex justify-between"><strong>JUnit 5</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Stack 2 -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 space-y-4">
+                    <div class="flex items-center gap-2 border-b border-slate-200/60 pb-3">
+                        <span class="text-2xl">💾</span>
+                        <h3 class="font-bold text-slate-800">Database & Middleware</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li class="flex justify-between"><strong>MySQL</strong></li>
+                        <li class="flex justify-between"><strong>Redis</strong></li>
+                        <li class="flex justify-between"><strong>RabbitMQ</strong></li>
+                        <li class="flex justify-between"><strong>AWS SQS / SNS</strong></li>
+                        <li class="flex justify-between"><strong>Oracle DB</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Stack 3 -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 space-y-4">
+                    <div class="flex items-center gap-2 border-b border-slate-200/60 pb-3">
+                        <span class="text-2xl">🐳</span>
+                        <h3 class="font-bold text-slate-800">Infra & DevOps</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li class="flex justify-between"><strong>Docker</strong></li>
+                        <li class="flex justify-between"><strong>Kubernetes</strong></li>
+                        <li class="flex justify-between"><strong>Linux</strong></li>
+                        <li class="flex justify-between"><strong>AWS Services</strong></li>
+                        <li class="flex justify-between"><strong>Git / JIRA</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-50/50 border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-xs font-bold tracking-widest text-slate-400 uppercase mb-8">SIDE PROJECTS</h2>
+
+            <div
+                class="max-w-2xl mx-auto bg-white p-6 rounded-2xl border border-slate-100 flex flex-col sm:flex-row items-center gap-6 shadow-sm">
+                <div
+                    class="w-24 h-24 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 flex flex-col items-center justify-center text-white p-3 shadow-md text-center shrink-0">
+                    <span class="text-3xl mb-1">🎁</span>
+                    <span class="text-[10px] font-bold">Mybury</span>
+                </div>
+                <div class="flex-1 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <h3 class="text-lg font-bold text-slate-900">버킷리스트 저장/달성 서비스 'Mybury'</h3>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded font-bold">다운로드
+                            1만+</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        사용자들이 버킷리스트를 작성하고 보관할 수 있도록 도와주는 서비스입니다.<br />
+                        <strong>API 개발 및 인프라 운영을 담당</strong>하였으며 평점 4.5 이상을 유지하고 있습니다.
+                    </p>
+                    <div class="flex gap-1.5 flex-wrap">
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">#Java</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">#Spring
+                            Boot</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">#AWS
+                            EC2</span>
+                        <span
+                            class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">#MySQL</span>
+                    </div>
+                    <a href="https://my-bury.com" target="_blank"
+                        class="inline-block text-xs text-primary font-semibold hover:underline">공식 링크 방문하기 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-12 px-4 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left space-y-1">
+                <p class="text-sm font-bold">&copy; 2026 Kim Haneul. All Rights Reserved.</p>
+            </div>
+            <div class="flex space-x-4 text-xs text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors">홈</a>
+                <span>|</span>
+                <a href="mailto:khaneul_c@naver.com" class="hover:text-white transition-colors">이메일 문의</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        // 클립보드 복사 유틸리티 (이메일 및 전화번호 안전 복사 대응)
+        function copyToClipboard(text, type) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const alertBox = document.getElementById('copyAlert');
+            alertBox.innerText = type === 'email' ? '이메일 주소 복사 완료!' : '연락처 복사 완료!';
+            alertBox.classList.remove('hidden');
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 1500);
+        }
+    </script>
+
+</body>
+
+</html>
